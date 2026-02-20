@@ -48,25 +48,115 @@ disp(C_new)
 disp("C final:")
 disp(C_f)
 
+disp("Displacement:")
+displacement = C_f - C_init;
+disp(displacement)
+
+% % 3.20
+% D_init = [-400 200 0];
+% alpha = 50;
+% phi - -70;
+% theta = 120;
+% 
+% R_alpha = simpleRotation(alpha, 'z');
+% R_phi = simpleRotation(phi, 'x')*R_alpha;
+% R_theta = simpleRotation(theta, 'x');
+% 
+% disp("R_alpha:")
+% disp(R_alpha)
+% disp("R_phi:")
+% disp(R_phi)
+% disp("R_theta:")
+% disp(R_theta) 
+% 
+% D_1 = D_init*R_phi;
+% D_final = D_1*R_theta;
+% 
+% disp("Final D coordinates: ")
+% disp(D_final);
+
 % 3.20
-D_init = [-400 200 0];
-alpha = 50;
-phi - -70;
+disp("3.20")
+D = [257.115 506.4178 0];
 theta = 120;
+phi = -70;
 
-R_alpha = simpleRotation(alpha, 'z');
-R_phi = simpleRotation(phi, 'x')*R_alpha;
+R_prime = simpleRotation(50, 'z');
+disp('R_prime:')
+disp(R_prime)
 R_theta = simpleRotation(theta, 'x');
+disp('R_theta:')
+disp(R_theta)
+R_phi = transpose(R_prime)*simpleRotation(phi, 'x')*R_prime;
+disp('R_phi:')
+disp(R_phi)
 
+D_1 = D*R_theta;
+disp('D_1:')
+disp(D_1)
+D_2 = D_1*R_phi;
+disp('D_2:')
+disp(D_2)
+displacement = D_2 - D;
+disp('Displacement: ')
+disp(displacement)
+
+% RT 1
+disp("RT 1")
+syms theta phi alpha real;
+Rx = [1 0 0; 0 cos(theta) sin(theta); 0 -sin(theta) cos(theta)];
+Ry = [cos(phi) 0 -sin(phi); 0 1 0; sin(phi) 0 cos(phi)];
+Rz = [cos(alpha) sin(alpha) 0; -sin(alpha) cos(alpha) 0; 0 0 1];
+RxRyRz = Rz*Ry*Rx;
+disp("x-y-z composition:")
+disp(RxRyRz)
+
+% RT 2
+disp("RT 2")
+RzRyRx = Rx*Ry*Rz;
+disp("z-y-x composition:")
+disp(RzRyRx)
+
+% RT 3 and RT4
+% see iPad, easier to do by hand
+
+%%%%%%
+
+% DISP 1
+disp("DISP 1")
+theta = 40;
+alpha = 45;
+phi = 25;
+varphi = 30;
+
+R_theta = simpleRotation(theta, 'z');
+disp("R_theta:")
+disp(R_theta)
+R_prime = simpleRotation(varphi, 'x');
+disp("R_prime:")
+disp(R_prime)
+R_alpha = transpose(R_prime)*simpleRotation(alpha, 'y')*R_prime; % 2
 disp("R_alpha:")
 disp(R_alpha)
+R_phi = transpose(R_prime)*simpleRotation(phi, 'z')*R_prime; % 3
 disp("R_phi:")
 disp(R_phi)
-disp("R_theta:")
-disp(R_theta) 
+delta_r = [0 0.1 0]; % 4
 
-D_1 = D_init*R_phi;
-D_final = D_1*R_theta;
+B = [0 0.53 0.25];
+B_1 = B*R_theta;
+disp("B_1:")
+disp(B_1)
+B_2 = B_1*R_alpha;
+disp("B_2:")
+disp(B_2)
+B_3 = B_2*R_phi;
+disp("B_3:")
+disp(B_3)
+B_f = B_3 + delta_r;
+disp("B_f:")
+disp(B_f)
 
-disp("Final D coordinates: ")
-disp(D_final);
+displacement = B_f - B;
+disp("Displacement:")
+disp(displacement)
