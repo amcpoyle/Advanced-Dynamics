@@ -1,14 +1,10 @@
 function tau = torsion(r)
-    r_prime = diff(r, 1);
-    e_tangent = tangentVector(r);
-    e_normal = normalVector(r);
-    e_binormal = cross(e_tangent, e_normal);
+    r1 = diff(r, 1);
+    r2 = diff(r, 2);
+    r3 = diff(r, 3);
 
-    % 1/tau = |d e_b / ds|
-    % this is irritating to compute
-    diff_eb = diff(e_binormal, 1);
-    s_prime = sqrt(dot(r_prime, r_prime)); % todo: make s_prime function
-    result = norm(diff_eb/s_prime);
-    tau = 1/result;
+    num = dot(cross(r1, r2), r3);
+    denom = norm(cross(r1, r2))^2
+    tau = num / denom;
 
 end
