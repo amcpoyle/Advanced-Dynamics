@@ -1,6 +1,6 @@
-function en = normalVector(r, t)
-    r_prime = diff(r, t);
-    r_2prime = diff(r_prime, t);
+function en = normalVector(r)
+    r_prime = diff(r, 1);
+    r_2prime = diff(r, 2);
 
     s_prime = sqrt(dot(r_prime, r_prime));
 
