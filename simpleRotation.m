@@ -1,17 +1,32 @@
 % simple rotations about 1 axis
 function rotationMatrix = simpleRotation(theta, axis)
     if matches(axis, 'x')
-        rotationMat = [1 0 0; 0 cosd(theta) sind(theta); 0 -sind(theta) cosd(theta)];
+        tempMat = [1 0 0; 0 cos(theta) sin(theta); 0 -sin(theta) cos(theta)];
+        if theta < 0
+            rotationMatrix = transpose(tempMat);
+        else
+            rotationMatrix = tempMat;
+        end
 
     elseif matches(axis, 'y')
-        rotationMat = [cosd(theta) 0 -sind(theta); 0 1 0; sind(theta) 0 cosd(theta)];
+        tempMat = [cos(theta) 0 -sin(theta); 0 1 0; sin(theta) 0 cos(theta)];
+        if theta < 0
+            rotationMatrix = transpose(tempMat);
+        else
+            rotationMatrix = tempMat;
+        end
     
     elseif matches(axis, 'z')
-        rotationMat = [cosd(theta) sind(theta) 0; -sind(theta) cosd(theta) 0; 0 0 1];
+        tempMat = [cos(theta) sin(theta) 0; -sin(theta) cos(theta) 0; 0 0 1];
+        if theta < 0
+            rotationMatrix = transpose(tempMat);
+        else
+            rotationMatrix = tempMat;
+        end
     else
         disp("Accepted axes are 'x', 'y', and 'z'")
 
     end
-    rotationMatrix = rotationMat; % technically redundant
+    % rotationMatrix = rotationMat; % technically redundant
 end
 

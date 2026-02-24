@@ -1,4 +1,5 @@
 % PCP1
+% calculating torsion, radius of curvature
 syms x_ theta real;
 y = 3*x_^2;
 x = sin(theta);

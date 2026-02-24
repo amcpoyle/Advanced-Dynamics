@@ -2,6 +2,5 @@
 function r = cylToCart(R, theta, z)
     x = R*cos(theta);
     y = R*sin(theta);
-    z = z;
     r = [x; y; z];
 end
