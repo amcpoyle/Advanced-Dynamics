@@ -1,0 +1,19 @@
+% HW3 PCP2
+syms t real;
+x = 4*t + 2*(t^2);
+y = cos(t) + 0.2*(t^3);
+z = 3*t;
+r = [x y z];
+
+rho = radiusOfCurvature(r); % matches with solution
+tau = torsion(r); % does not match with solution
+tau_solutions = torsionSolutions(r);
+
+t = 0;
+
+rho
+
+% comparing torsion values
+
+
+% comparing way of multiplying rotation matrices

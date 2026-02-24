@@ -27,6 +27,7 @@ disp(displacement)
 %}
 
 % 3.20 FROM SOLUTIONS:
+% ALL OF THIS IS FROM SOLUTIONS
 R_prime = simpleRotation(deg2rad(-50), 'z'); % Rz1 % NOTE: it says 40 in solns, maybe supposed to be -50?
 R_theta = simpleRotation(deg2rad(120), 'x'); % Rx1
 R_phi = simpleRotation(deg2rad(70), 'y'); % Ry, NOTE: sign swap on 70 compared to solutions
@@ -36,7 +37,6 @@ pointC = [0 400 0];
 pointD = [200 0 0];
 
 % ' operator = complex conjugate + transpose
-% we only have reals here so this is just the transpose I guess
 origLoc = pointB' + R_prime'*pointC' + R_prime'*pointD';
 newLoc = R_theta'*pointB' + R_theta'*R_prime'*pointC' + R_theta'*R_prime'*R_phi'*pointD';
 displacement = newLoc - origLoc;
@@ -51,13 +51,17 @@ pointB = [400 0 0];
 pointC = [0 400 0];
 pointD = [200 0 0];
 
-disp("solutions origLoc: ")
+disp("origLoc FROM SOLUTIONS: ")
 disp(origLoc)
 
+% what we discussed at the end of class?
 origLoc_test1 = transpose(pointB) + R_prime*transpose(pointC) + R_prime*transpose(pointD); % incorrect answer
+
+% my calculation of origLoc
 origLoc_test2 = pointB + pointC*R_prime + pointD*R_prime; % correct answer
 
-disp("right multiplication: ")
+disp("discussed at end of class: ")
 disp(origLoc_test1)
-disp('left multiplication: ')
+
+disp('my calculation: ')
 disp(origLoc_test2)
