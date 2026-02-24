@@ -4,7 +4,8 @@ function en = normalVector(r)
 
     s_prime = ds(r);
 
-    en = ((r_2prime*(s_prime^2)) - r_prime*(dot(r_prime, r_2prime)))/...
+    e_n = ((r_2prime*(s_prime^2)) - r_prime*(dot(r_prime, r_2prime)))/...
         (s_prime*sqrt((dot(r_2prime, r_2prime)*(s_prime^2) - ...
         (dot(r_prime, r_2prime))^2 )));
+    en = e_n/norm(e_n);
 end

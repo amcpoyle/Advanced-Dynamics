@@ -15,7 +15,7 @@ trace_A = trace(A);
 % implementation of radius of curvature
 syms a k theta real
 r = [a*cos(theta), a*sin(theta), k*theta];
-rho = radiusOfCurvature(r, theta);
+rho = radiusOfCurvature(r);
 disp("Radius of curvature: ")
 disp(rho)
 rho_eval = subs(rho, theta, deg2rad(60));
@@ -23,16 +23,16 @@ disp("Evaluated rho: ")
 disp(rho_eval)
 
 % torsion test
-tau = torsion(r, theta);
+tau = torsion(r);
 disp("Torsion: ");
 disp(subs(tau, theta, deg2rad(60)));
 
 % tangent vector
-e_t = tangentVector(r, theta);
+e_t = tangentVector(r);
 disp("Tangent Vector: ")
 disp(e_t)
 
 % normal vector
-e_n = normalVector(r, theta);
+e_n = normalVector(r);
 disp("Normal vector: ")
 disp(e_n)
