@@ -10,6 +10,7 @@ A_norm = norm(A);
 element_wise = A .* B; % tbh I never understood this so I hope I don't need it
 det_A = det(A);
 trace_A = trace(A);
+[eigenvecs, eigenvals] = eig(A);
 
 % implementation of radius of curvature
 syms a k theta real
