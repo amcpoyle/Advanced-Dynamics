@@ -51,12 +51,13 @@ pointB = [400 0 0];
 pointC = [0 400 0];
 pointD = [200 0 0];
 
-origLoc_test1 = transpose(pointB) + R_prime*transpose(pointC) + R_prime*transpose(pointD);
-origLoc_test2 = pointB + pointC*R_prime + pointD*R_prime;
+disp("solutions origLoc: ")
+disp(origLoc)
+
+origLoc_test1 = transpose(pointB) + R_prime*transpose(pointC) + R_prime*transpose(pointD); % incorrect answer
+origLoc_test2 = pointB + pointC*R_prime + pointD*R_prime; % correct answer
 
 disp("right multiplication: ")
 disp(origLoc_test1)
 disp('left multiplication: ')
 disp(origLoc_test2)
-
-% oh no, they are both incorrect
